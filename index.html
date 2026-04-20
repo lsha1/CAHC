@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceremonial Art Healing Centre | Hobart, Tasmania</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #E05B80;
+            --pink-light: #F8E8ED;
+            --blue: #8DA6C6;
+            --blue-light: #EDF1F6;
+            --yellow: #EFDA9E;
+            --yellow-light: #FBF6EA;
+            --grey: #B5AFA7;
+            --grey-dark: #7A756E;
+            --grey-text: #5A5550;
+            --white: #FFFFFF;
+            --off-white: #FAFAF8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--grey-text);
+            background: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ===== DECORATIVE SVG BACKGROUND ===== */
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-pattern svg {
+            position: absolute;
+            opacity: 0.04;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(181,175,167,0.15);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            height: 50px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--grey-dark);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--pink); }
+        .nav-cta {
+            background: var(--pink);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 12px !important;
+            letter-spacing: 1.5px;
+            transition: background 0.3s, transform 0.3s !important;
+        }
+        .nav-cta:hover {
+            background: #c74d6e;
+            transform: translateY(-1px);
+        }
+        .mobile-menu { display: none; cursor: pointer; }
+        .mobile-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--grey-dark);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: var(--white);
+            padding: 120px 32px 80px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        .hero-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 48px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(28px, 4vw, 44px);
+            color: var(--grey-dark);
+            line-height: 1.3;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .hero p {
+            font-size: 17px;
+            color: var(--grey);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .hero-subtitle {
+            font-size: 12px !important;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--pink) !important;
+            font-weight: 500;
+            margin-bottom: 8px !important;
+            animation: fadeInUp 1s ease 0.1s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        .btn-primary {
+            background: var(--pink);
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: #c74d6e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,91,128,0.25); }
+        .btn-secondary {
+            background: transparent;
+            color: var(--grey-dark);
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            border: 1px solid var(--grey);
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 32px; position: relative; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--pink);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(28px, 3.5vw, 40px);
+            color: var(--grey-dark);
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+
+        /* ===== WHAT HAPPENS HERE ===== */
+        .experience {
+            background: var(--off-white);
+        }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .experience-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.85;
+        }
+        .experience-image {
+            position: relative;
+        }
+        .experience-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .experience-image::after {
+            content: '';
+            position: absolute;
+            top: -16px; right: -16px;
+            width: 100%; height: 100%;
+            border: 1px solid var(--yellow);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        /* ===== PILLARS ===== */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 56px;
+        }
+        .pillar {
+            text-align: center;
+            padding: 48px 32px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid rgba(181,175,167,0.15);
+            transition: all 0.4s;
+        }
+        .pillar:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 24px;
+        }
+        .pillar h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 22px;
+            color: var(--grey-dark);
+            margin-bottom: 16px;
+        }
+        .pillar p {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--grey);
+        }
+
+        /* ===== PROGRAMS ===== */
+        .programs { background: var(--white); }
+        .program-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+        .program-card {
+            background: var(--off-white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(181,175,167,0.1);
+        }
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+        }
+        .program-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+        .program-card-body {
+            padding: 36px;
+        }
+        .program-tag {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--pink);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .program-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 26px;
+            color: var(--grey-dark);
+            margin-bottom: 16px;
+        }
+        .program-card p {
+            font-size: 15px;
+            line-height: 1.75;
+            margin-bottom: 24px;
+            color: var(--grey);
+        }
+        .program-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .program-detail {
+            font-size: 13px;
+            color: var(--grey-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .program-detail svg {
+            width: 16px;
+            height: 16px;
+            color: var(--pink);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--off-white);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 8px;
+        }
+        .about-text blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--pink);
+            line-height: 1.5;
+            margin-bottom: 28px;
+            padding-left: 24px;
+            border-left: 2px solid var(--yellow);
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+        .about-credentials {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--grey);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: var(--white); position: relative; overflow: hidden; }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .testimonial {
+            background: var(--off-white);
+            border-radius: 8px;
+            padding: 40px 32px;
+            position: relative;
+            border: 1px solid rgba(181,175,167,0.1);
+        }
+        .testimonial::before {
+            content: '\201C';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: var(--yellow);
+            position: absolute;
+            top: 12px; left: 24px;
+            line-height: 1;
+        }
+        .testimonial p {
+            font-size: 15px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--grey-dark);
+            letter-spacing: 0.5px;
+        }
+        .testimonial-context {
+            font-size: 12px;
+            color: var(--grey);
+            margin-top: 2px;
+        }
+
+        /* ===== GALLERY STRIP ===== */
+        .gallery-strip {
+            padding: 0;
+            overflow: hidden;
+            background: var(--off-white);
+        }
+        .gallery-scroll {
+            display: flex;
+            gap: 4px;
+        }
+        .gallery-scroll img {
+            height: 280px;
+            width: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .contact-intro p {
+            font-size: 16px;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--grey-dark);
+        }
+        .contact-info-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--pink);
+            flex-shrink: 0;
+        }
+        .contact-form {
+            background: var(--off-white);
+            padding: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(181,175,167,0.12);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--grey-dark);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(181,175,167,0.3);
+            border-radius: 6px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 15px;
+            color: var(--grey-text);
+            background: var(--white);
+            transition: border-color 0.3s;
+            font-weight: 300;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--grey-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 32px 40px;
+            text-align: center;
+        }
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        footer p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin: 24px 0;
+            list-style: none;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: rgba(255,255,255,0.9); }
+        .footer-copy {
+            font-size: 12px;
+            margin-top: 32px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .experience-grid,
+            .about-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .about-grid { direction: ltr; }
+            .about-image img { height: 360px; }
+            .form-row { grid-template-columns: 1fr; }
+            .experience-image::after { display: none; }
+        }
+
+        /* ===== SEPARATOR MOTIF ===== */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 0 auto;
+            padding: 24px 0;
+        }
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--grey);
+            opacity: 0.3;
+        }
+        .divider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/06/CEREMONIAL-ART-HEALING-CENTRE-FACEBOOK-ICON-RGB.png" alt="Ceremonial Art Healing Centre" class="nav-logo">
+            <ul class="nav-links">
+                <li><a href="#experience">The Space</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#about">About Karen</a></li>
+                <li><a href="#testimonials">Stories</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <!-- Decorative background SVGs mimicking logo style -->
+        <div class="bg-pattern">
+            <svg width="400" height="400" viewBox="0 0 400 400" style="top: 5%; right: -5%;">
+                <circle cx="200" cy="200" r="190" fill="none" stroke="#B5AFA7" stroke-width="1"/>
+                <line x1="200" y1="10" x2="200" y2="390" stroke="#B5AFA7" stroke-width="0.5"/>
+                <line x1="10" y1="200" x2="390" y2="200" stroke="#B5AFA7" stroke-width="0.5"/>
+                <circle cx="200" cy="200" r="120" fill="none" stroke="#B5AFA7" stroke-width="0.5"/>
+            </svg>
+            <svg width="300" height="300" viewBox="0 0 300 300" style="bottom: 10%; left: -3%;">
+                <circle cx="150" cy="150" r="140" fill="none" stroke="#B5AFA7" stroke-width="1"/>
+                <path d="M150,10 L150,290 M10,150 L290,150" stroke="#B5AFA7" stroke-width="0.5"/>
+            </svg>
+            <svg width="200" height="200" viewBox="0 0 200 200" style="top: 30%; left: 15%;">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#EFDA9E" stroke-width="0.8"/>
+            </svg>
+            <svg width="160" height="160" viewBox="0 0 160 160" style="bottom: 25%; right: 12%;">
+                <circle cx="80" cy="80" r="70" fill="none" stroke="#8DA6C6" stroke-width="0.8"/>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/06/CEREMONIAL-ART-HEALING-CENTRE-FACEBOOK-ICON-RGB.png" alt="Ceremonial Art Healing Centre" class="hero-logo">
+            <p class="hero-subtitle">Hobart, Tasmania</p>
+            <h1>Gentle practices to regulate<br>the nervous system and<br>rewire the brain</h1>
+            <p>A welcoming, non-competitive space for women to slow down, create, and transform through meditative art. No experience needed.</p>
+            <div class="hero-buttons">
+                <a href="#programs" class="btn-primary">Explore Programs</a>
+                <a href="#contact" class="btn-secondary">Express Interest</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT HAPPENS HERE ===== -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="experience-grid reveal">
+                <div class="experience-text">
+                    <p class="section-label">The Space</p>
+                    <h2 class="section-heading">Breath. Stillness.<br>Then something shifts.</h2>
+                    <p>You arrive. The door closes on the outside world. A warm drink, soft music, a room that asks nothing of you. Karen guides a gentle meditation. Your breath slows. Your shoulders drop.</p>
+                    <p>Then the art materials appear. Not to make something beautiful &mdash; to let something true move through your hands. Pastels, paint, collage. No right way. No judgment. Just you, meeting yourself on the page.</p>
+                    <p>By the end, something feels lighter. Not because anyone fixed anything &mdash; but because you finally had space to feel it, name it, and let it be.</p>
+                </div>
+                <div class="experience-image">
+                    <img src="https://cahc.com.au/wp-content/uploads/2024/10/20230803_115345-1-768x1024.jpg" alt="Women creating art together in a meditative session at the Ceremonial Art Healing Centre">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THREE PILLARS ===== -->
+    <section class="pillars-section">
+        <div class="container">
+            <div style="text-align: center;" class="reveal">
+                <p class="section-label">The Approach</p>
+                <h2 class="section-heading">Body. Mind. Spirit.</h2>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar reveal">
+                    <svg class="pillar-icon" viewBox="0 0 56 56" fill="none">
+                        <circle cx="28" cy="28" r="26" stroke="#8DA6C6" stroke-width="1.2"/>
+                        <path d="M28 14c0 0-10 8-10 16s4.5 12 10 12 10-4 10-12S28 14 28 14z" stroke="#8DA6C6" stroke-width="1.2" fill="none"/>
+                        <line x1="28" y1="22" x2="28" y2="36" stroke="#8DA6C6" stroke-width="1"/>
+                    </svg>
+                    <h3>Somatic Experiencing</h3>
+                    <p>Guided breath work and body awareness practices that help you notice what's held in the body &mdash; and gently release it.</p>
+                </div>
+                <div class="pillar reveal">
+                    <svg class="pillar-icon" viewBox="0 0 56 56" fill="none">
+                        <circle cx="28" cy="28" r="26" stroke="#E05B80" stroke-width="1.2"/>
+                        <circle cx="28" cy="24" r="8" stroke="#E05B80" stroke-width="1.2" fill="none"/>
+                        <path d="M20 38c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#E05B80" stroke-width="1.2" fill="none"/>
+                    </svg>
+                    <h3>Meditative Art</h3>
+                    <p>Process-oriented intuitive art &mdash; no skill required. The making itself becomes meditation, and what emerges on the page often surprises.</p>
+                </div>
+                <div class="pillar reveal">
+                    <svg class="pillar-icon" viewBox="0 0 56 56" fill="none">
+                        <circle cx="28" cy="28" r="26" stroke="#EFDA9E" stroke-width="1.2"/>
+                        <circle cx="28" cy="28" r="10" stroke="#EFDA9E" stroke-width="1.2" fill="none"/>
+                        <circle cx="28" cy="28" r="3" fill="#EFDA9E"/>
+                        <line x1="28" y1="6" x2="28" y2="14" stroke="#EFDA9E" stroke-width="1"/>
+                        <line x1="28" y1="42" x2="28" y2="50" stroke="#EFDA9E" stroke-width="1"/>
+                        <line x1="6" y1="28" x2="14" y2="28" stroke="#EFDA9E" stroke-width="1"/>
+                        <line x1="42" y1="28" x2="50" y2="28" stroke="#EFDA9E" stroke-width="1"/>
+                    </svg>
+                    <h3>Mindfulness & Connection</h3>
+                    <p>Learn to observe thought patterns without being swept away. Small groups of up to 8 create a safe circle for sharing and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAMS ===== -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div style="text-align: center;" class="reveal">
+                <p class="section-label">Programs</p>
+                <h2 class="section-heading">Two ways in</h2>
+                <p style="max-width: 560px; margin: 0 auto 16px; color: var(--grey); font-size: 16px;">Whether you're ready to dive deep or just want to dip a toe, there's a place for you here.</p>
+            </div>
+            <div class="program-cards">
+                <div class="program-card reveal">
+                    <img src="https://cahc.com.au/wp-content/uploads/2024/08/1000014504-1024x906.jpg" alt="Inner Artistry group art therapy session">
+                    <div class="program-card-body">
+                        <p class="program-tag">6-Week Journey</p>
+                        <h3>Inner Artistry</h3>
+                        <p>A transformational 6-week group experience weaving meditation, intuitive art, and mindfulness coaching. For women ready to step off the hamster wheel of anxious thought patterns and discover a quieter, more vibrant way to be.</p>
+                        <div class="program-details">
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                6 weeks, 2 hrs/session
+                            </span>
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                                Max 8 per group
+                            </span>
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Hobart CBD
+                            </span>
+                        </div>
+                        <a href="#contact" class="btn-primary">Express Interest</a>
+                    </div>
+                </div>
+                <div class="program-card reveal">
+                    <img src="https://cahc.com.au/wp-content/uploads/2023/09/20230527_152137-1024x768.jpg" alt="Meditate and Create casual art session">
+                    <div class="program-card-body">
+                        <p class="program-tag">Monthly Session</p>
+                        <h3>Meditate &amp; Create</h3>
+                        <p>A soothing, standalone guided art experience to support inner calm, clarity, and creative flow. Come once to see what it's like, or let it become a gentle monthly rhythm. A perfect doorway into the deeper Inner Artistry journey.</p>
+                        <div class="program-details">
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Single session
+                            </span>
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                No commitment
+                            </span>
+                            <span class="program-detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Hobart CBD
+                            </span>
+                        </div>
+                        <a href="#contact" class="btn-primary">Express Interest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY STRIP ===== -->
+    <div class="gallery-strip">
+        <div class="gallery-scroll">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/09/20221120_123759-1024x768.jpg" alt="Art therapy session work">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/09/20230317_212155-1024x700.jpg" alt="Intuitive artwork">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/06/20230604_141048-1-1024x768.jpg" alt="Group art session">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/06/20221211_110504-1024x768.jpg" alt="Rock paint connect session">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/09/20230122_114923-1024x768.jpg" alt="Art materials and workspace">
+            <img src="https://cahc.com.au/wp-content/uploads/2023/06/20230105_130211-1024x713.jpg" alt="Intuitive art creation">
+            <img src="https://cahc.com.au/wp-content/uploads/2022/11/20221029_112209-1024x768.jpg" alt="Group healing artwork">
+        </div>
+    </div>
+
+    <!-- ===== ABOUT KAREN ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-image">
+                    <img src="https://cahc.com.au/wp-content/uploads/2023/04/20221003_105907-768x1024.jpg" alt="Karen Gilbert, founder of Ceremonial Art Healing Centre">
+                </div>
+                <div class="about-text">
+                    <p class="section-label">Meet Karen</p>
+                    <h2 class="section-heading">Karen Gilbert M.Ed (C&amp;D)</h2>
+                    <blockquote>The older I get, the more I love the person I am becoming.</blockquote>
+                    <p>Karen knows what it feels like to be stuck. Anxiety, depression, grief &mdash; she's walked through all of it. That lived experience, combined with decades of professional practice as a psychotherapist and counsellor, shapes everything about how she holds space.</p>
+                    <p>Her approach weaves humour, education, and experiential learning together. Healing, she believes, doesn't have to be so serious and heavy. Through breath, somatic experiencing, and meditative art, she helps women reconnect with parts of themselves they'd forgotten were there.</p>
+                    <p class="about-credentials">Master of Education (Counselling &amp; Development), University of Tasmania &middot; Psychotherapist &middot; Family Counsellor &middot; Energy Healing Practitioner &middot; Based in Hobart since her late 20s &middot; Grandmother</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div style="text-align: center;" class="reveal">
+                <p class="section-label">In Their Words</p>
+                <h2 class="section-heading">What stays with people</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial reveal">
+                    <p>I have been going over all we delved into over the last six weeks and I have to say &mdash; so much growth is now moving through me. I am beginning to feel my own power, truth and strength to just be. Just be me.</p>
+                    <span class="testimonial-author">Amanda</span>
+                    <div class="testimonial-context">Inner Artistry participant</div>
+                </div>
+                <div class="testimonial reveal">
+                    <p>This kind of class is rare. After many years of doing internal work, brain-training, and psychological analysis, this was absolutely perfect. The process was appropriately cathartic &mdash; but more peaceful and grounded than I had imagined going in.</p>
+                    <span class="testimonial-author">Holly Huber</span>
+                    <div class="testimonial-context">Visited from the US, 2023</div>
+                </div>
+                <div class="testimonial reveal">
+                    <p>Thank you for creating this space where I could safely and gently reconnect to a missing part of myself. I didn't even remember that artistic expression was once a big part of who I am. Now this authentic part of me is miraculously awakening.</p>
+                    <span class="testimonial-author">Yining</span>
+                    <div class="testimonial-context">Inner Artistry participant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-intro reveal">
+                    <p class="section-label">Get in Touch</p>
+                    <h2 class="section-heading">Curious? That's enough<br>to start.</h2>
+                    <p>You don't need to have it all figured out. If something on this page resonated, send a note. Karen personally reads every message and will get back to you to chat about what might be right for you.</p>
+                    <p>No pressure, no commitment. Just a conversation.</p>
+
+                    <div style="margin-top: 40px;">
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Hobart CBD, Tasmania
+                        </div>
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            cahc.com.au/contact
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form id="interestForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="name" required placeholder="Your first name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" required placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>I'm interested in</label>
+                            <select name="interest">
+                                <option value="" disabled selected>Choose one...</option>
+                                <option value="inner-artistry">Inner Artistry (6-week program)</option>
+                                <option value="meditate-create">Meditate &amp; Create (monthly session)</option>
+                                <option value="not-sure">Not sure yet &mdash; just curious</option>
+                                <option value="private-group">Private group booking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Anything you'd like Karen to know?</label>
+                            <textarea name="message" placeholder="Optional &mdash; share as much or as little as you'd like"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary form-submit">Send Message</button>
+                    </form>
+                    <div id="formSuccess" style="display: none; text-align: center; padding: 40px 0;">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom: 16px;">
+                            <circle cx="24" cy="24" r="22" stroke="#E05B80" stroke-width="1.5"/>
+                            <polyline points="16,24 22,30 32,18" stroke="#E05B80" stroke-width="2" fill="none"/>
+                        </svg>
+                        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 24px; color: var(--grey-dark); margin-bottom: 8px;">Thank you</h3>
+                        <p style="color: var(--grey); font-size: 15px;">Karen will be in touch with you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <img src="https://cahc.com.au/wp-content/uploads/2023/06/CEREMONIAL-ART-HEALING-CENTRE-FACEBOOK-ICON-RGB.png" alt="CAHC" class="footer-logo">
+        <p>Ceremonial Art Healing Centre<br>Hobart, Tasmania</p>
+        <ul class="footer-links">
+            <li><a href="#experience">The Space</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2026 Ceremonial Art Healing Centre. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Nav shadow on scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('interestForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

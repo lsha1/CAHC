@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outback Chiropractic Hobart | Neck Pain, Back Pain & Headache Relief</title>
+  <meta name="description" content="Outback Chiropractic in North Hobart helps patients with neck pain, back pain, headaches and musculoskeletal issues. New patients seen same day. Call (03) 6231 5225.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #AC1D13;
+      --primary-dark: #8B1710;
+      --primary-light: #C4342A;
+      --text: #2D2D2D;
+      --text-light: #5A5A5A;
+      --bg: #FFFFFF;
+      --bg-warm: #FDF8F7;
+      --bg-gray: #F5F3F2;
+      --border: #E8E0DE;
+      --shadow: 0 2px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--bg);
+    }
+
+    h1, h2, h3, h4 { font-family: 'Merriweather', Georgia, serif; line-height: 1.3; }
+
+    img { max-width: 100%; height: auto; }
+
+    a { color: var(--primary); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--primary-dark); }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      background: var(--primary);
+      color: white;
+      padding: 8px 0;
+      font-size: 0.85rem;
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar a { color: white; }
+    .top-bar a:hover { color: #FFD4D1; }
+
+    /* ── Header ── */
+    header {
+      background: white;
+      padding: 20px 0;
+      border-bottom: 3px solid var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-area { display: flex; align-items: center; gap: 16px; }
+    .logo-area img { height: 60px; width: auto; }
+    .logo-text h1 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0;
+      letter-spacing: -0.5px;
+    }
+    .logo-text span { color: var(--primary); }
+    .header-cta {
+      text-align: right;
+      white-space: nowrap;
+    }
+    .header-cta .phone {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+    .header-cta .subtext {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* ── Navigation ── */
+    nav {
+      background: var(--primary);
+    }
+    nav .container {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--bg-warm) 0%, #FFF 100%);
+      overflow: hidden;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .hero-content h2 {
+      font-size: 2.4rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero-content h2 span { color: var(--primary); }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+    .hero-image {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(172, 29, 19, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ── Trust Strip ── */
+    .trust-strip {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .trust-strip .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-strip span {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .trust-logos img {
+      height: 28px;
+      width: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .trust-logos img:hover { opacity: 1; }
+
+    /* ── About / Mission ── */
+    .about {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    .about .container {
+      max-width: 900px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+    .about p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .mission-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .mission-card {
+      background: var(--bg-warm);
+      border-radius: 12px;
+      padding: 28px;
+      border-left: 4px solid var(--primary);
+    }
+    .mission-card h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .mission-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Conditions We Treat ── */
+    .conditions {
+      padding: 80px 0;
+      background: var(--bg-warm);
+    }
+    .conditions h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .conditions > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 48px;
+      font-size: 1.05rem;
+    }
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .condition-item {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .condition-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .condition-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-warm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.5rem;
+    }
+    .condition-item h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .condition-item p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* ── Services ── */
+    .services {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    .services h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--bg-gray);
+      border-radius: 12px;
+      padding: 32px;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .service-card h4::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* ── Team ── */
+    .team {
+      padding: 80px 0;
+      background: var(--bg-warm);
+    }
+    .team h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .team > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .team-card:hover { transform: translateY(-4px); }
+    .team-card .photo {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: top;
+      background: var(--bg-gray);
+    }
+    .team-card .info {
+      padding: 24px;
+    }
+    .team-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .team-card .role {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .team-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    /* ── Reviews ── */
+    .reviews {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    .reviews h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .reviews-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: var(--bg-warm);
+      border-radius: 12px;
+      padding: 32px;
+      position: relative;
+    }
+    .review-card .stars {
+      color: #F5A623;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+    .review-card blockquote {
+      font-style: italic;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .review-card .reviewer {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    .review-card .source {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .cta .btn-white {
+      background: white;
+      color: var(--primary);
+      padding: 16px 36px;
+      font-size: 1.1rem;
+    }
+    .cta .btn-white:hover {
+      background: #f0f0f0;
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .cta .btn-ghost {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 14px 34px;
+      font-size: 1.1rem;
+    }
+    .cta .btn-ghost:hover {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .cta-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    .cta-info span { display: flex; align-items: center; gap: 8px; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1A1A1A;
+      color: #CCC;
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    footer h4 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    footer p { font-size: 0.9rem; line-height: 1.8; }
+    footer a { color: #CCC; }
+    footer a:hover { color: var(--primary-light); }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 8px; font-size: 0.9rem; }
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* ── Mobile ── */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 6px 0;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 900px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+      .hero-content h2 { font-size: 1.8rem; }
+      .hero-image img { height: 280px; }
+      .mission-cards { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .mobile-menu-btn { display: block; }
+      nav .container {
+        display: none;
+        flex-direction: column;
+      }
+      nav.open .container { display: flex; }
+      nav a { padding: 12px 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .header-cta { display: none; }
+      .top-bar .container { justify-content: center; text-align: center; }
+      .logo-text h1 { font-size: 1.2rem; }
+      .cta h2 { font-size: 1.6rem; }
+      .cta-info { flex-direction: column; align-items: center; gap: 12px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <span>263 Elizabeth Street, North Hobart, TAS 7000</span>
+      <span>
+        <a href="tel:0362315225">Call (03) 6231 5225</a>
+        &nbsp;&bull;&nbsp;
+        <a href="mailto:outback.chiropractic@outlook.com">outback.chiropractic@outlook.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo-area">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2011/09/header11.png" alt="Outback Chiropractic Logo" style="height: 70px;">
+      </div>
+      <div class="header-cta">
+        <a href="tel:0362315225" class="phone">(03) 6231 5225</a>
+        <span class="subtext">New patients seen same day!</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav id="mainNav">
+    <button class="mobile-menu-btn" onclick="document.getElementById('mainNav').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="container">
+      <a href="#" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#conditions">Conditions</a>
+      <a href="#services">Services</a>
+      <a href="#team">Our Team</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Your Path to <span>Better Health</span> Starts Here</h2>
+        <p>At Outback Chiropractic, we help patients understand what chiropractic care is all about and work with you to achieve your health goals. Whether you're dealing with neck pain, back pain, headaches, or other musculoskeletal issues &mdash; this is what we do, and we're here to help.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="tel:0362315225" class="btn btn-primary">Book an Appointment</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2011/09/1-main-pic-spine-woman2.jpg" alt="Chiropractic spine care at Outback Chiropractic Hobart">
+        <div class="hero-badge">New Patients Seen Same Day</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="container">
+      <span>Preferred provider for:</span>
+      <div class="trust-logos">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2012/07/BUPA-logo_small-e1343221718412.jpg" alt="Bupa">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2012/07/medibank-logo_small-e1343221395613.jpg" alt="Medibank">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2012/07/HicapsLogo3_small-e1343221598638.jpg" alt="HICAPS">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2012/07/sports-medicine_small-e1343221238398.jpg" alt="Sports Medicine Australia">
+        <img src="https://outbackchiro.com.au/wp-content/uploads/2012/07/FICS-logo_small.jpg" alt="FICS">
+      </div>
+      <span>All health funds accepted</span>
+    </div>
+  </div>
+
+  <!-- About / Mission -->
+  <section class="about" id="about">
+    <div class="container">
+      <span class="section-label">About Us</span>
+      <h2>Helping You Achieve Your Health Goals</h2>
+      <p>Outback Chiropractic features a group of highly trained and experienced health care professionals that work together with you to help you recover. We believe in treating the whole person &mdash; not just the symptoms &mdash; through expert care, education, and collaboration with other health care practitioners.</p>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <h4>Our Mission</h4>
+          <p>To optimise the health and performance of our patients through a progressive and integrated healthcare centre.</p>
+        </div>
+        <div class="mission-card">
+          <h4>Education &amp; Prevention</h4>
+          <p>To inspire and empower our patients to help themselves through education, prevention, and ongoing support.</p>
+        </div>
+        <div class="mission-card">
+          <h4>Holistic Healing</h4>
+          <p>To provide holistic healthcare within an atmosphere that embraces the healing of both mind and body.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions We Treat -->
+  <section class="conditions" id="conditions">
+    <div class="container">
+      <span class="section-label">How We Can Help</span>
+      <h2>Conditions We Treat</h2>
+      <p>Our team is experienced in diagnosing and treating a wide range of musculoskeletal conditions. If you're in pain or discomfort, we can help.</p>
+      <div class="conditions-grid">
+        <div class="condition-item">
+          <div class="condition-icon">&#128170;</div>
+          <h4>Back Pain</h4>
+          <p>Lower back pain, upper back pain, disc issues &mdash; we'll identify the cause and get you on the road to recovery.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#129504;</div>
+          <h4>Neck Pain</h4>
+          <p>Stiffness, restricted movement, or acute pain in the neck from poor posture, injury, or stress.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#128556;</div>
+          <h4>Headaches &amp; Migraines</h4>
+          <p>Tension headaches and migraines often have a musculoskeletal origin that responds well to chiropractic care.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#9889;</div>
+          <h4>Sciatica</h4>
+          <p>Shooting pain from the lower back down the leg? We treat the underlying cause, not just the symptoms.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#127939;</div>
+          <h4>Sports Injuries</h4>
+          <p>From weekend warriors to elite athletes &mdash; we help you recover faster and perform better.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#128663;</div>
+          <h4>Motor Accident Injuries</h4>
+          <p>Whiplash and other injuries from motor vehicle accidents treated with comprehensive care.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#129328;</div>
+          <h4>Pregnancy Related Pain</h4>
+          <p>Gentle, safe treatment for the unique musculoskeletal challenges that pregnancy brings.</p>
+        </div>
+        <div class="condition-item">
+          <div class="condition-icon">&#128188;</div>
+          <h4>Workplace Injuries</h4>
+          <p>Repetitive strain, postural problems, and work-related injuries &mdash; we accept workers compensation claims.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <span class="section-label">What We Offer</span>
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h4>Chiropractic Adjustments</h4>
+          <p>We employ a wide range of established techniques including Gonstead, Diversified, Thompson drop, SOT, and Activator &mdash; tailored to your specific needs.</p>
+        </div>
+        <div class="service-card">
+          <h4>Sports Chiropractic</h4>
+          <p>Dr Haslett holds a postgraduate International Chiropractic Sports Science Diploma, bringing elite-level sports injury knowledge to your care.</p>
+        </div>
+        <div class="service-card">
+          <h4>Rehabilitation</h4>
+          <p>Both passive and active rehabilitation programs tailored to facilitate healing and ensure you're less likely to suffer re-injuries or relapses.</p>
+        </div>
+        <div class="service-card">
+          <h4>Posture Analysis &amp; Correction</h4>
+          <p>A postural screening can reveal the underlying health and shape of your spine, helping prevent issues before they start.</p>
+        </div>
+        <div class="service-card">
+          <h4>Massage Therapy</h4>
+          <p>Licensed massage therapists using kneading, compression, and controlled pressure to relieve chronic stress and muscle tension.</p>
+        </div>
+        <div class="service-card">
+          <h4>Lifestyle &amp; Ergonomic Advice</h4>
+          <p>Exercises, posture correction, ergonomic guidance, dietary advice, and best practices to keep you well between visits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team" id="team">
+    <div class="container">
+      <span class="section-label">Meet Your Care Team</span>
+      <h2>Our Team</h2>
+      <p>A dedicated group of professionals committed to your health and wellbeing.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <img class="photo" src="https://outbackchiro.com.au/wp-content/uploads/2011/09/Andrew_Haslett-225x300.png" alt="Dr. Andrew Haslett - Chiropractor at Outback Chiropractic Hobart">
+          <div class="info">
+            <h4>Dr. Andrew Haslett</h4>
+            <span class="role">BSc., D.C. &mdash; Chiropractor</span>
+            <p>Palmer College graduate (Summa Cum Laude) with over 14 years' experience in Tasmania. Member of Sports Medicine Australia with a postgraduate diploma in International Chiropractic Sport Science.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <img class="photo" src="https://outbackchiro.com.au/wp-content/uploads/2011/09/Anne_Peltier-193x300.png" alt="Anne Peltier - Office Manager at Outback Chiropractic Hobart">
+          <div class="info">
+            <h4>Anne Peltier</h4>
+            <span class="role">Office Manager &amp; Chiropractic Assistant</span>
+            <p>Anne is one of the first friendly faces you'll see at Outback Chiropractic. A true asset to the clinic, she's been with the team since the beginning and keeps everything running smoothly.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="photo" style="background: var(--bg-gray); display: flex; align-items: center; justify-content: center; height: 300px;">
+            <span style="font-size: 4rem; opacity: 0.3;">&#128100;</span>
+          </div>
+          <div class="info">
+            <h4>Emily Dean</h4>
+            <span class="role">Chiropractic Assistant</span>
+            <p>Emily joined the team in 2017 and holds a Certificate III in Business. She has a passion for helping patients and brings warmth and efficiency to every interaction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <span class="section-label">Patient Testimonials</span>
+      <h2>What Our Patients Say</h2>
+      <p class="reviews-subtitle">We're proud of the care we provide and the results our patients achieve.</p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Dr. Andrew was very thorough in his assessment and listened to my concerns. He took x-rays on the spot, and told me exactly what was going on. After a few treatments, I am feeling great! I highly recommend his care!"</blockquote>
+          <div class="reviewer">Patient Review</div>
+          <div class="source">via Yelp &mdash; 5.0 Stars</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"A trustworthy and effective choice for chiropractic care. The whole team is professional, friendly, and genuinely cares about getting you better. I wouldn't go anywhere else in Hobart."</blockquote>
+          <div class="reviewer">Patient Review</div>
+          <div class="source">via Yellow Pages &mdash; 5.0 Stars</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Ready to Feel Better?</h2>
+      <p>Whether you're dealing with back pain, neck pain, headaches, or just want to improve your overall health &mdash; we're here to help. New patients are seen the same day wherever possible.</p>
+      <div class="cta-buttons">
+        <a href="tel:0362315225" class="btn btn-white">Call (03) 6231 5225</a>
+        <a href="mailto:outback.chiropractic@outlook.com" class="btn btn-ghost">Email Us</a>
+      </div>
+      <div class="cta-info">
+        <span>&#128205; 263 Elizabeth Street, North Hobart</span>
+        <span>&#128336; Mon&ndash;Fri 8am&ndash;6pm &bull; Sat by appointment</span>
+        <span>&#9989; All health funds accepted</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Outback Chiropractic</h4>
+          <p>A progressive and integrated healthcare centre in North Hobart, dedicated to helping you achieve your health goals through expert chiropractic care, rehabilitation, and massage therapy.</p>
+          <p style="margin-top: 12px;"><strong>ABN:</strong> Registered healthcare provider</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Chiropractic</a></li>
+            <li><a href="#services">Sports Chiropractic</a></li>
+            <li><a href="#services">Rehabilitation</a></li>
+            <li><a href="#services">Massage Therapy</a></li>
+            <li><a href="#services">Posture Analysis</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>263 Elizabeth Street<br>North Hobart, TAS 7000</p>
+          <p style="margin-top: 8px;"><a href="tel:0362315225">(03) 6231 5225</a></p>
+          <p><a href="mailto:outback.chiropractic@outlook.com">outback.chiropractic@outlook.com</a></p>
+          <p style="margin-top: 8px;"><strong>Hours:</strong><br>Mon&ndash;Fri: 8am &ndash; 6pm<br>Sat: By appointment<br>Sun: Closed</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Outback Chiropractic. All rights reserved. | 263 Elizabeth Street, North Hobart TAS 7000 | (03) 6231 5225</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
